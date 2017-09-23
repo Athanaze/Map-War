@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Map War</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="js/values.js"></script>
+    <script src="js/actionsPOI.js"></script>
+</head>
+
+<body>
+    <div id="menu">
+        <h1 id="money">500'000 $</h1>
+        <h2 id="motivationH">100%</h1>
+                <img id="motivation" class="iconMenu"/>
+            <h1>Troupes</h1>
+            <li>
+                <ul>
+                    <h2 class="nbM" id="nbSniper">2</h2>
+                    <img id="sniper" class="iconMenu"/>
+                    <button class="addTroupe" onclick="addUnit('sniper', 1)"></button>
+                </ul>
+                <ul>
+                    <h2 class="nbM" id="nbTank">2</h2>
+                    <img id="tank"class="iconMenu"/>
+                    <button class="addTroupe" onclick="addUnit('tank', 1)"></button>
+                </ul>
+                <ul>
+                    <h2 class="nbM" id="nbTankTruck">2</h2>
+                    <img id="tankTruck"class="iconMenu"/>
+                    <button class="addTroupe" onclick="addUnit('tankTruck', 1)"></button>
+                </ul>
+                <ul>
+                    <h2 class="nbM" id="nbSoldier">2</h2>
+                    <img id="soldier"class="iconMenu"/>
+                    <button class="addTroupe" onclick="addUnit('soldier', 1)"></button>
+
+                </ul>
+            </li>
+    </div>
+    <div id="actionMenu">
+        <h1 id="actionTitle">Vider Berfin</h1>
+        <h1 id="estimateTime">Temps estimé : 2h</h1>
+        <h1>Nombres d'homme</h1>
+        <input type="number" min="1" max="7" id="inputNbUnit" value="1" onchange="refreshAM()">
+        <button id="submitActionMenu" onclick="submitAM()">Valider</button>
+        <script>setupAM();</script>
+    </div>
+
+    <div id="map"></div>
+    <div id="infowindow-content">
+        <img id="place-icon" src="" height="16" width="16">
+        <span id="place-name" class="title"></span><br> Place ID <span id="place-id"></span><br>
+        <span id="place-address"></span>
+    </div>
+
+    <script>
+        var map;
+        var markerArray = [];
+        var radiusArray = [];
+        var zoneArray = [];
+        var icZoneArray = [];
+        var tankArray = [];
+        var flagArray = [];
+        var sniper0;
+        var center;
+
+        //Variables concernant le déplacement des tanks
+        var wantNewPoint = false;
+        var currentPopUpTank;
+
+        var directionsService;
+        var directionsDisplay;
+
+        //Test de déplacement en ligne droite
+        var drone;
+        var finish;
+        function initMap() {
+            var origin = {
+                lat: 46.806405,
+                lng: 7.166539
+            };
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: origin,
+                zoom: 18,
+                mapTypeId: 'hybrid',
+                heading: 270,
+                tilt: 45
+            });
+            var clickHandler = new ClickEventHandler(map, origin);
+            addSniper(46.806405, 7.166539);
+            addSniper(46.806409, 7.167999);
+            addZone();
+            addTank(locationCreator(46.807405, 7.166939));
+            addDrone(locationCreator(46.807905, 7.166039));
+            addFinish(locationCreator(46.808205, 7.164050));
+            directionSetup();
+            deplacement();
+            score();
+        }
+
+        function eat() {
+            alert("miam miam");
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARpXM0iDbPZNCowIUUxaA_Q2ZOBt6fda0&libraries=geometry,places&callback=initMap" async defer></script>
+
+    <!-- NE PAS ECRIRE SOUS LA FORME <script src="tool.js"/> !!! -->
+    <script src="js/popUp.js"></script>
+
+    <script src="js/marker.js"></script>
+    <script src="js/tool.js"></script>
+    <script src="js/move.js"></script>
+    <script src="js/drone.js"></script>
+    <script src="js/clic.js"></script>
+    <script src="js/poi.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/zone.js"></script>
+    <script src="js/score.js"></script>
+
+</body>
+
+</html>

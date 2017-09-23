@@ -1,0 +1,113 @@
+#map {
+    top: 0px;
+    left: 0px;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+#menu {
+    top: 100px;
+    right: 0px;
+    position: absolute;
+    background-color: rgba(20, 20, 20, 0.5);
+    padding-right: 0;
+    padding-left: 32px;
+    width: 160px;
+    z-index: 2;
+}
+#actionMenu {
+    top: 100px;
+    left: 0px;
+    position: absolute;
+    background-color: rgba(20, 20, 20, 0.5);
+    padding-right: 0;
+    padding-left: 32px;
+    width: 160px;
+    z-index: 2;
+}
+#inputNbUnit {
+    width: 80px;
+    height: 32px;
+    background-color: #e33054;
+    border: none;
+    color: white;
+    font-size: 24px;
+}
+#submitActionMenu, #refreshAM {
+    margin-top: 8px;
+}
+
+h1,
+h2 {
+    font-family: sans-serif;
+    color: white;
+}
+
+h2 {
+    display: inline;
+    font-size: 32px;
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    list-style: none;
+}
+
+#money {
+    color: green;
+}
+
+#motivationH {
+    color: green;
+}
+
+.nbM {}
+
+.iconMenu,
+.addTroupe {
+    display: inline;
+    height: 32px;
+    width: 32px;
+    margin-left: 16px;
+    padding: none;
+}
+.addTroupe{
+    background-image: url("img/skin/white/add.png");
+    background-color: transparent;
+}
+/* Optional: Makes the sample page fill the window. */
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.title {
+    font-weight: bold;
+}
+
+#infowindow-content {
+    display: none;
+}
+
+#map #infowindow-content {
+    display: inline;
+}
+
+button {
+    background-color: #e33054;
+    color: white;
+    text-transform: uppercase;
+    border: none;
+    padding: 16px;
+    border-radius: 100px;
+}
+.firstHeading {
+    color: black;
+}
